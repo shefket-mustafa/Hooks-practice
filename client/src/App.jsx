@@ -1,3 +1,4 @@
+import Chat from "./components/Chat"
 
 
 function App() {
@@ -5,7 +6,7 @@ function App() {
 
   return (
     <>
-    
+    <Chat />
     </>
   )
 }
