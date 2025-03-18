@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
-import { AppstoreOutlined, MailOutlined, HomeOutlined } from '@ant-design/icons';
+import { HomeOutlined, MessageOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
+import {Link} from 'react-router'
 const items = [
   {
-    label: 'Home',
+    
     key: 'home',
     icon: <HomeOutlined />,
+    label: <Link to={'/'}>Home</Link> 
   },
   {
     label: 'Chat',
     key: 'chat',
-    icon: <AppstoreOutlined />,
+    icon: <MessageOutlined />,
     
   },
   

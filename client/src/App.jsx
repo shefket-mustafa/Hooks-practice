@@ -1,22 +1,31 @@
-import { Spin } from "antd";
-import Chat from "./components/Chat"
-import useFetch from "./hooks/useFetch"
-import Navigation from "./components/Navigation";
 
-const url = 'http://localhost:3030/jsonstore/messenger'
+
+import ChatPage from "./components/ChatPage";
+import HomePage from "./components/HomePage";
+import Navigation from "./components/Navigation";
+import { Route, Routes } from "react-router";
+
+
 
 function App() {
-  const [pending, messages] = useFetch(url, []);
-
-  console.log(messages);
   
+
 
   return (
     <>
 
     <Navigation />
-    {pending ?
-    <Spin /> : <Chat messages = {messages}/>}
+
+    <Routes>
+
+    <Route index element={<HomePage />}/>
+
+    <Route path='/chat' element={<ChatPage />}/>
+      
+    
+
+    </Routes>
+  
     
     </>
   )
