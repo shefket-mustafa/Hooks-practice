@@ -1,31 +1,26 @@
 import React from 'react';
-import { Avatar, Button, List, Skeleton } from 'antd';
-const count = 3;
+import { Avatar, List, Skeleton } from 'antd';
 
-const Chat = ({ messages}) => {
-  
-
-  
-  return (
-    <List
-      className="demo-loadmore-list"
-      itemLayout="horizontal"
-      dataSource={messages}
-      renderItem={(message) => (
-        <List.Item
-          actions={[<a key="list-loadmore-edit">edit</a>, <a key="list-loadmore-more">more</a>]}
-        >
-          {/* <Skeleton avatar title={false} loading={message.loading} active> */}
-            <List.Item.Meta
-              avatar={<Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=2" />}
-              title={<a href="https://ant.design">{message.author}</a>}
-              description={message.content}
-            />
-            <div>content</div>
-          {/* </Skeleton> */}
-        </List.Item>
-      )}
-    />
-  );
+export default function Chat({
+    messages,
+}) {
+    return (
+        <List
+            className="demo-loadmore-list"
+            itemLayout="horizontal"
+            dataSource={messages}
+            bordered
+            renderItem={(message) => (
+                <List.Item
+                    actions={[<a key="list-loadmore-edit">edit</a>, <a key="list-loadmore-more">more</a>]}
+                >
+                    <List.Item.Meta
+                        avatar={<Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=2" />}
+                        title={<a href="https://ant.design">{message.author}</a>}
+                        description={message.content}
+                    />
+                </List.Item>
+            )}
+        />
+    );
 };
-export default Chat;

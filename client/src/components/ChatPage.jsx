@@ -1,19 +1,21 @@
-import { Spin } from "antd";
-import Chat from "./Chat"
-import useFetch from "../hooks/useFetch"
 
-const url = 'http://localhost:3030/jsonstore/messenger';
+
+import useFetch from "../hooks/useFetch";
+import Chat from "./Chat"
+import { Spin } from "antd";
+
+const url = 'http://localhost:3030/jsonstore/messages';
 
 export default function ChatPage() {
     const [pending, messages] = useFetch(url, []);
 
-    if(pending){
+    if (pending) {
         return <Spin />
     }
 
-  return (
+    return (
         <>
-        
-     <Chat messages = {messages}/></>
-    )
+            <Chat messages={messages} />
+        </>
+    );
 }

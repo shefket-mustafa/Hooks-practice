@@ -1,29 +1,26 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react';
 
+export default function useFetch(url, defaultState = {}) {
+    const [state, setState] = useState(defaultState);
+    const [pendig, setPending] = useState(true);
 
-export default function useFetch(url, defaultState={}){
-    const [state, setState] = useState(defaultState)
-    const [pending, setPending] = useState(true);
-
-    useEffect(()=>{
+    useEffect(() => {
         setPending(true);
         const abortController = new AbortController();
 
-        fetch(url, {signal: abortController.signal})
-        .then(res => res.json())
-        .then(result => {
-            setState(Object.values(result));
-        })
-        .finally(()=>{
-            setPending(false)
-        })
+        fetch(url, { signal: abortController.signal })
+            .then(res => res.json())
+            .then(result => {
+                setState(Object.values(result));
+            })
+            .finally(() => {
+                setPending(false);
+            })
 
         return () => {
             abortController.abort();
         }
-    },[url])
-     
-    //[pending, messages]
-    return [pending, state];
+    }, [url]);
 
-} 
+    return [pendig, state]
+}
