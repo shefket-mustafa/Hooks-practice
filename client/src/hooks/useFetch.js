@@ -6,12 +6,19 @@ export default function useFetch(url, defaultState={}){
     const [pending, setPending] = useState(true);
 
     useEffect(()=>{
-        fetch(url)
+        setPending(true);
+        const abortController = new AbortController();
+
+        fetch(url, {signal: abortController.signal})
         .then(res => res.json())
         .then(result => {
             setState(Object.values(result));
             setPending(false);
         })
+
+        return () => {
+            abortController.abort();
+        }
     },[url])
      
     //[pending, messages]

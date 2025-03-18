@@ -10,7 +10,7 @@ const items = [
     label: <Link to={'/'}>Home</Link> 
   },
   {
-    label: 'Chat',
+    label: <Link to={'/chat'}>Chat</Link>,
     key: 'chat',
     icon: <MessageOutlined />,
     
@@ -20,8 +20,8 @@ const items = [
 ];
 const Navigation = () => {
   const [current, setCurrent] = useState('mail');
+
   const onClick = (e) => {
-    console.log('click ', e);
     setCurrent(e.key);
   };
   return <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />;
